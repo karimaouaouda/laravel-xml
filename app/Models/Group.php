@@ -9,4 +9,26 @@ class Group extends Model
 {
     /** @use HasFactory<\Database\Factories\GroupFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'teacher_id',
+        'group_number',
+    ];
+
+
+    //relationships
+    public function teacher()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function students()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function exercises()
+    {
+        return $this->belongsToMany(Exercise::class, 'exercise_groups');
+    }
+
 }

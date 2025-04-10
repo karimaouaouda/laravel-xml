@@ -2,10 +2,12 @@
 
 namespace App\Filament\Teacher\Resources;
 
+use App\Enums\UserRoles;
 use App\Filament\Teacher\Resources\UserResource\Pages;
 use App\Filament\Teacher\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -20,6 +22,12 @@ class UserResource extends Resource
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('role', UserRoles::STUDENT->value);
+    }
 
     public static function form(Form $form): Form
     {
@@ -42,10 +50,14 @@ class UserResource extends Resource
                     ->afterStateUpdated(function (callable $set, $state) {
                         $set('email', $state);
                     }),
-                    TextInput::make('password')
+                TextInput::make('password')
                     ->label('Password')
                     ->required()
-                    ->password()
+                    ->password(),
+                RichEditor::make('text')
+                    ->label('Text')
+                    ->required()
+                    ->lineBreaks()  
             ]);
     }
 
@@ -55,14 +67,15 @@ class UserResource extends Resource
             ->columns([
                 TextColumn::make('id')
                     ->label('ID')
-                    ->sortable()
-                    ->searchable()
-                    ->toggleable(),
+                    ->prefix('#')
+                    ->searchable(),
                 TextColumn::make('name')
                     ->label('Name')
                     ->sortable()
-                    ->searchable()
-                    ->toggleable(),
+                    ->searchable(),
+                TextColumn::make('group.group_number')
+                    ->badge()
+
             ])
             ->filters([
                 //

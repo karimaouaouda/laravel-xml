@@ -13,7 +13,7 @@ class GroupPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->isTeacher();
     }
 
     /**
@@ -21,7 +21,7 @@ class GroupPolicy
      */
     public function view(User $user, Group $group): bool
     {
-        return false;
+        return $user->isTeacher() && $user->id == $group->teacher_id;
     }
 
     /**
@@ -29,7 +29,7 @@ class GroupPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->isTeacher();
     }
 
     /**
@@ -37,7 +37,7 @@ class GroupPolicy
      */
     public function update(User $user, Group $group): bool
     {
-        return false;
+        return $user->isTeacher() && $group->teacher_id == $user->id;
     }
 
     /**
@@ -45,7 +45,7 @@ class GroupPolicy
      */
     public function delete(User $user, Group $group): bool
     {
-        return false;
+        return $user->isTeacher() && $group->teacher_id == $user->id;
     }
 
     /**
@@ -53,7 +53,7 @@ class GroupPolicy
      */
     public function restore(User $user, Group $group): bool
     {
-        return false;
+        return $user->isTeacher() && $group->teacher_id == $user->id;
     }
 
     /**
@@ -61,6 +61,6 @@ class GroupPolicy
      */
     public function forceDelete(User $user, Group $group): bool
     {
-        return false;
+        return $user->isTeacher() && $group->teacher_id == $user->id;
     }
 }
