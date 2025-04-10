@@ -42,6 +42,10 @@ class UserResource extends Resource
                     ->afterStateUpdated(function (callable $set, $state) {
                         $set('email', $state);
                     }),
+                    TextInput::make('password')
+                    ->label('Password')
+                    ->required()
+                    ->password()
             ]);
     }
 
