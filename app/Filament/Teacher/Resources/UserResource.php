@@ -58,7 +58,6 @@ class UserResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->toggleable(),
-
                 TextColumn::make('name')
                     ->label('Name')
                     ->sortable()
