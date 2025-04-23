@@ -23,7 +23,7 @@ class ExercisePolicy
     {
         return (
             ($user->isTeacher() && $user->isCerates($exercise)) ||
-            ($user->isStudent() && $exercise->groups()->firstWhere('group_id', $user->group_id))
+            ($user->isStudent() && $exercise->groups()->firstWhere('group_id', $user->group->first()->id))
         );
     }
 

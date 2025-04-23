@@ -6,12 +6,14 @@ namespace App\Models;
 
 use App\Enums\UserRoles;
 use App\Traits\HasRoles;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasRoles;
@@ -65,11 +67,38 @@ class User extends Authenticatable
     }
 
 
-    public function group(){
-        return $this->belongsTo(Group::class);
+    public function group(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(
+            Group::class,
+            'students_groups',
+            'student_id',
+            'group_id'
+            )
+            ->withPivot(['group_id', 'student_id']);
     }
 
-    public function groups(){
+    public function groups(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
         return $this->hasMany(Group::class, 'teacher_id');
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function canAccessPanel(Panel $panel): bool
+    {
+
+        return $this->getAttribute('role')->value == $panel->getId();
+    }
+
+    public function answers(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Answer::class , 'student_id');
+    }
+
+    public function solved(int|string $exo_id): bool
+    {
+        return $this->answers()->where('exercise_id', $exo_id)->exists();
     }
 }

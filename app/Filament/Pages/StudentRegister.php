@@ -2,11 +2,8 @@
 
 namespace App\Filament\Pages;
 
-use Filament\Pages\Page;
+use Filament\Pages\Auth\Register;
 
-class StudentRegister extends Page
+class StudentRegister extends Register
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
-
-    protected static string $view = 'filament.pages.student-register';
 }

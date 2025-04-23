@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Filament\Resources\AnswerResource\Pages;
+
+use App\Filament\Resources\AnswerResource;
+use App\Filament\Resources\ExerciseResource\Widgets\ExerciseWidget;
+use App\Models\Exercise;
+use Filament\Actions;
+use Filament\Actions\Action;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
+use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+
+class CreateAnswer extends CreateRecord
+{
+    protected static string $resource = AnswerResource::class;
+
+    public Exercise $exercise;
+
+    protected static bool $canCreateAnother  = false;
+
+    public function form(Form $form): Form
+    {
+        return $form
+            ->columns(1)
+            ->schema([
+                Hidden::make('student_id')
+                    ->required()
+                    ->default(auth()->id()),
+                Hidden::make('exercise_id')
+                    ->required()
+                    ->default($this->exercise->getAttribute('id')),
+                RichEditor::make('content')
+                    ->default(function(){
+                        return Auth::user()->solved($this->exercise->id) ?
+                            Auth::user()->answers()->where('exercise_id', $this->exercise->id)->first()->content :
+                            '';
+                    })
+                    ->disabled(Auth::user()->solved($this->exercise->id))
+                    ->label('your answer')
+                    ->required(),
+            ]);
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            ExerciseWidget::make([
+                'exercise' => $this->exercise,
+            ]),
+        ];
+    }
+
+    protected function getCreateFormAction(): Action
+    {
+        return parent::getCreateFormAction()
+            ->disabled(Auth::user()->solved($this->exercise->id))
+            ->label('submit');
+    }
+
+}

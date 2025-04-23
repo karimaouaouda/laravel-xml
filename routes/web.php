@@ -21,4 +21,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 });
 
+Route::get('/hash/{word}', function($word){
+    return \Illuminate\Support\Facades\Hash::make($word);
+});
+
 require __DIR__.'/auth.php';

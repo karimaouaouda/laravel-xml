@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Observers\ExerciseObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+#[ObservedBy(ExerciseObserver::class)]
 class Exercise extends Model
 {
     /** @use HasFactory<\Database\Factories\ExerciseFactory> */
@@ -23,9 +26,9 @@ class Exercise extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function groups()
+    public function groups(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Group::class, 'exercise_groups');
+        return $this->belongsToMany(Group::class, 'groups_exercises');
     }
 
 }

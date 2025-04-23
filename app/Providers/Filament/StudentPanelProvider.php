@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Enums\UserRoles;
 use App\Filament\Pages\StudentLogin;
 use App\Filament\Pages\StudentRegister;
 use Filament\Http\Middleware\Authenticate;
@@ -22,14 +23,17 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class StudentPanelProvider extends PanelProvider
 {
+    /**
+     * @throws \Exception
+     */
     public function panel(Panel $panel): Panel
     {
         return $panel
             ->default()
-            ->id('student')
+            ->id(UserRoles::STUDENT->value)
             ->path('student')
-            ->login(StudentLogin::class)
-            ->registration(StudentRegister::class)
+            ->login()
+            ->databaseNotifications()
             ->colors([
                 'primary' => Color::Amber,
             ])

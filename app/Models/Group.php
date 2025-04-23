@@ -26,9 +26,9 @@ class Group extends Model
         return $this->hasMany(User::class);
     }
 
-    public function exercises()
+    public function exercises(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Exercise::class, 'exercise_groups');
+        return $this->belongsToMany(Exercise::class, 'groups_exercises');
     }
 
 }

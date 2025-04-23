@@ -22,7 +22,7 @@ class ExerciseResource extends Resource
 {
     protected static ?string $model = Exercise::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
 
     public static function form(Form $form): Form
     {
@@ -30,6 +30,21 @@ class ExerciseResource extends Resource
             ->schema([
                 Hidden::make('teacher_id')
                     ->default(Auth::id()),
+                Forms\Components\Checkbox::make('all')
+                    ->label('for all the groups')
+                    ->default(true)
+                    ->live(),
+                Forms\Components\Select::make('groups')
+                    ->visible(fn(Forms\Get $get) => !$get('all'))
+                    ->options(function (){
+                        return $db_groups = Auth::user()->groups->pluck('id', 'group_number')->toArray();
+                    })
+                    ->disabled(function(Forms\Get $get){
+                        return $get('all');
+                    })
+                    ->multiple()
+                    ->minItems(1)
+                    ->required(),
                 RichEditor::make('content')
                     ->label('anouncement')
                     ->required(),

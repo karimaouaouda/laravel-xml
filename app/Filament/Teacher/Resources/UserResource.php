@@ -16,12 +16,15 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $label = "Student";
+
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     public static function getEloquentQuery(): Builder
     {
@@ -32,7 +35,12 @@ class UserResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+            ->columns(1)
             ->schema([
+                Forms\Components\Select::make('group_id')
+                    ->options(function(){
+                        return Auth::user()->groups->pluck('id', 'group_number')->toArray();
+                    }),
                 TextInput::make('name')
                     ->label('Name')
                     ->required()
@@ -54,10 +62,6 @@ class UserResource extends Resource
                     ->label('Password')
                     ->required()
                     ->password(),
-                RichEditor::make('text')
-                    ->label('Text')
-                    ->required()
-                    ->lineBreaks()  
             ]);
     }
 

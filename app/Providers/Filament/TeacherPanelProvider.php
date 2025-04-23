@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Enums\UserRoles;
 use App\Filament\Teacher\Pages\TeacherLogin;
 use App\Filament\Teacher\Pages\TeacherRegister;
 use Filament\Http\Middleware\Authenticate;
@@ -22,10 +23,13 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class TeacherPanelProvider extends PanelProvider
 {
+    /**
+     * @throws \Exception
+     */
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->id('teacher')
+            ->id(UserRoles::TEACHER->value)
             ->path('teacher')
             ->colors([
                 'primary' => Color::Amber,

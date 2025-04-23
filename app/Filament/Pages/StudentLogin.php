@@ -2,11 +2,9 @@
 
 namespace App\Filament\Pages;
 
+use Filament\Pages\Auth\Login;
 use Filament\Pages\Page;
 
-class StudentLogin extends Page
+class StudentLogin extends Login
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
-
-    protected static string $view = 'filament.pages.student-login';
 }
