@@ -52,7 +52,7 @@ class GroupResource extends Resource
                     ->label('exercises attached to this group')
                     ->default(fn(Group $record) => $record->exercises()->count())
                     ->badge()
-                    ->color(Color::Blue)
+                    ->color(Color::Blue),
 
             ])
             ->filters([
