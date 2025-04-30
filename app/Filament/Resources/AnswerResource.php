@@ -9,6 +9,7 @@ use App\Models\Exercise;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Colors\Color;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -23,8 +24,10 @@ class AnswerResource extends Resource
 
     public static Exercise $exercise;
 
-
-
+    public static function getEloquentQuery(): Builder
+    {
+        return Answer::query()->where('student_id', Auth::id());
+    }
 
     public static function form(Form $form): Form
     {
@@ -38,13 +41,55 @@ class AnswerResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('id')
+                    ->prefix('#')
+                    ->badge()
+                    ->color(Color::Blue)
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('date submission')
+                    ->badge()
+                    ->dateTime(),
+                Tables\Columns\TextColumn::make('note')
+                    ->default('x')
+                    ->badge()
+                    ->color(function($state){
+                        if( $state == 'x' ){
+                            return Color::Gray;
+                        }
+                        if( $state < 10 ){
+                            return Color::Red;
+                        }
+
+                        if( $state < 15 ){
+                            return Color::Blue;
+                        }
+
+                        return Color::Green;
+                    })
+                    ->formatStateUsing(fn ($state): string => $state . '/20'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('view exo')
+                    ->icon('heroicon-o-eye')
+                    ->modal()
+                    ->modalContent(function(Answer $record) {
+                        return view('filament.resources.exercise-resource.widgets.exercise-widget', [
+                            'exercise' => $record->exercise,
+                        ]);
+                    }),
+                Tables\Actions\Action::make('view solution')
+                    ->icon('heroicon-o-eye')
+                    ->modal()
+                    ->modalContent(function(Answer $record) {
+                        return view('filament.resources.exercise-resource.widgets.exercise-widget', [
+                            'exercise' => $record,
+                            'title' => 'the solution'
+                        ]);
+                    })
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

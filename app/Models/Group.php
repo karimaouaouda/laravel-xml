@@ -23,12 +23,21 @@ class Group extends Model
     }
     public function students()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(
+            User::class,
+            'students_groups',
+            'group_id',
+            'student_id'
+        );
     }
 
     public function exercises(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Exercise::class, 'groups_exercises');
+        return $this->belongsToMany(
+            Exercise::class,
+            'groups_exercises',
+
+        );
     }
 
 }

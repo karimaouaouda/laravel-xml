@@ -10,6 +10,13 @@ class ListAnswers extends ListRecords
 {
     protected static string $resource = AnswerResource::class;
 
+    public static function getColumnSpan(){
+        return 'full';
+    }
+    public static function getColumnStart(){
+        return '1';
+    }
+
     protected function getHeaderActions(): array
     {
         return [

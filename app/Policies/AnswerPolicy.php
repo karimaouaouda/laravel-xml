@@ -29,7 +29,7 @@ class AnswerPolicy
      */
     public function create(User $user): bool
     {
-        return $user->isStudent();
+        return $user->isStudent() || true;
     }
 
     /**

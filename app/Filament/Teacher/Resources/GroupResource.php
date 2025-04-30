@@ -10,6 +10,7 @@ use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Colors\Color;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -46,7 +47,12 @@ class GroupResource extends Resource
                     ->badge(),
                 TextColumn::make('students_count')
                     ->default(fn(Group $record) => $record->students()->count())
+                    ->badge(),
+                TextColumn::make('exercises_count')
+                    ->label('exercises attached to this group')
+                    ->default(fn(Group $record) => $record->exercises()->count())
                     ->badge()
+                    ->color(Color::Blue)
 
             ])
             ->filters([

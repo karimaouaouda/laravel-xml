@@ -26,6 +26,11 @@ class Exercise extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function answers(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Answer::class);
+    }
+
     public function groups(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Group::class, 'groups_exercises');

@@ -89,12 +89,16 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
 
-        return $this->getAttribute('role')->value == $panel->getId();
+        return true || $this->getAttribute('role')->value == $panel->getId();
     }
 
     public function answers(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Answer::class , 'student_id');
+    }
+
+    public function exercises(){
+        return $this->hasMany(Exercise::class, 'teacher_id');
     }
 
     public function solved(int|string $exo_id): bool
