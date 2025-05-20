@@ -19,8 +19,11 @@ return new class extends Migration
             $table->foreignId('exercise_id')
                 ->constrained('exercises')
                 ->cascadeOnDelete();
-            $table->text('content');
-            $table->boolean('is_correct')
+            $table->text('xml_content')
+                ->nullable();
+            $table->text('xsd_content')
+                ->nullable();
+            $table->text('xslt_content')
                 ->nullable();
             $table->float('note', 2)->nullable();
             $table->timestamps();

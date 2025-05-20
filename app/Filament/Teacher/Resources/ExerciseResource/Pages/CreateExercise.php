@@ -12,21 +12,33 @@ use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class CreateExercise extends CreateRecord
 {
     protected static string $resource = ExerciseResource::class;
 
+    /**
+     * @throws ValidationException
+     */
     protected function handleRecordCreation(array $data): Model
     {
         $isAll = $data['all'] ?? false;
 
-        return DB::transaction(function () use ($data, $isAll) {
-            $exercise = new Exercise([
-                'teacher_id' => Auth::id(),
-                'end_at' => $data['end_at'],
-                'content' => $data['content'],
+        if( !($data['require_xml'] || $data['require_xsd'] || $data['require_xslt']) ){
+            Notification::make()
+                ->title('error when creatig exercise')
+                ->body('must be at least one type is checked')
+                ->danger()
+                ->send();
+            throw ValidationException::withMessages([
+                'require_xml' => 'error when creating exercise'
             ]);
+        }
+
+        return DB::transaction(function () use ($data, $isAll) {
+            $exercise = new Exercise($data);
 
             $exercise->save();
 

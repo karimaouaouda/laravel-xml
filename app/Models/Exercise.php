@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Observers\ExerciseObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,8 +17,21 @@ class Exercise extends Model
     protected $fillable = [
         'teacher_id',
         'content',
+        'require_xml',
+        'require_xsd',
+        'require_xslt',
         'end_at'
     ];
+
+    protected $casts = [
+        'require_xml' => 'boolean',
+        'require_xsd' => 'boolean',
+        'require_xslt' => 'boolean',
+        'end_at' => 'datetime'
+    ];
+
+
+
 
 
     //relationships

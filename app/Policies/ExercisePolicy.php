@@ -40,7 +40,7 @@ class ExercisePolicy
      */
     public function update(User $user, Exercise $exercise): bool
     {
-        return $user->isTeacher();
+        return $user->isTeacher() && $exercise->getAttribute('teacher_id') == $user->getAttribute('id');
     }
 
     /**

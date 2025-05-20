@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4564419ceaeda6152722da4c4a7f237e",
+    "content-hash": "925aa67c9a5bcf262268cd151fcada4d",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -221,6 +221,82 @@
                 }
             ],
             "time": "2025-02-13T20:35:06+00:00"
+        },
+        {
+            "name": "bmatovu/laravel-xml",
+            "version": "v4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mtvbrianking/laravel-xml.git",
+                "reference": "4aadc0228a1985923e513538c16616c0e7545d6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mtvbrianking/laravel-xml/zipball/4aadc0228a1985923e513538c16616c0e7545d6a",
+                "reference": "4aadc0228a1985923e513538c16616c0e7545d6a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^10.0|^11.0|^12.0",
+                "illuminate/http": "^10.0|^11.0|^12.0",
+                "illuminate/support": "^10.0|^11.0|^12.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "laravel/framework": "^10.0|^11.0|^12.0",
+                "orchestra/testbench": "^8.0|^9.0|^10.0",
+                "phpunit/phpunit": "^9.0|^10.0|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Xml": "Bmatovu\\LaravelXml\\LaravelXml"
+                    },
+                    "providers": [
+                        "Bmatovu\\LaravelXml\\LaravelXmlServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Support/helpers.php"
+                ],
+                "psr-4": {
+                    "Bmatovu\\LaravelXml\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Matovu",
+                    "email": "mtvbrianking@gmail.com",
+                    "homepage": "https://bmatovu.com",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Laravel XML Support",
+            "homepage": "https://github.com/mtvbrianking/laravel-xml",
+            "keywords": [
+                "laravel",
+                "middleware",
+                "package",
+                "request",
+                "response",
+                "xml"
+            ],
+            "support": {
+                "issues": "https://github.com/mtvbrianking/laravel-xml/issues",
+                "source": "https://github.com/mtvbrianking/laravel-xml/tree/v4.1.0"
+            },
+            "time": "2025-02-21T09:12:14+00:00"
         },
         {
             "name": "brick/math",
@@ -7590,6 +7666,79 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "wiebenieuwenhuis/filament-code-editor",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sweebee/filament-code-editor.git",
+                "reference": "f2e575f32fb0a0536b6ecae86c0d6a3c8509be33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sweebee/filament-code-editor/zipball/f2e575f32fb0a0536b6ecae86c0d6a3c8509be33",
+                "reference": "f2e575f32fb0a0536b6ecae86c0d6a3c8509be33",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0",
+                "illuminate/contracts": "^11.0|^12.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.9.2"
+            },
+            "require-dev": {
+                "nunomaduro/collision": "^8.1",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^8.0|^9.0",
+                "pestphp/pest": "^2.34",
+                "pestphp/pest-plugin-laravel": "^2.3",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^10.5",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Wiebenieuwenhuis\\FilamentCodeEditor\\FilamentCodeEditorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wiebenieuwenhuis\\FilamentCodeEditor\\": "src",
+                    "Wiebenieuwenhuis\\FilamentCodeEditor\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastiaan Kloos",
+                    "email": "sebastiaankloos@pm.me",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Wiebe Nieuwenhuis",
+                    "email": "info@wiebenieuwenhuis.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Code editor for Filament",
+            "homepage": "https://github.com/sweebee/filament-code-editor",
+            "keywords": [
+                "filament-code-editor",
+                "laravel"
+            ],
+            "support": {
+                "source": "https://github.com/sweebee/filament-code-editor/tree/1.2.0"
+            },
+            "time": "2025-04-14T19:32:31+00:00"
         }
     ],
     "packages-dev": [
@@ -10765,12 +10914,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }

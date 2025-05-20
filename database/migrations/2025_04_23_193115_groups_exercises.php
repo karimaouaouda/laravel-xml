@@ -19,6 +19,7 @@ return new class extends Migration
            $table->foreignId('exercise_id')
                ->constrained('exercises')
                ->onDelete('cascade');
+
         });
     }
 

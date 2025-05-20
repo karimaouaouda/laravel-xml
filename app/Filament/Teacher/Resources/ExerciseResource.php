@@ -33,8 +33,10 @@ class ExerciseResource extends Resource
                 Forms\Components\Checkbox::make('all')
                     ->label('for all the groups')
                     ->default(true)
+                    ->columnSpan(3)
                     ->live(),
                 Forms\Components\Select::make('groups')
+                    ->columnSpan(3)
                     ->visible(fn(Forms\Get $get) => !$get('all'))
                     ->options(function (){
                         return $db_groups = Auth::user()->groups->pluck('id', 'group_number')->toArray();
@@ -46,12 +48,24 @@ class ExerciseResource extends Resource
                     ->minItems(1)
                     ->required(),
                 RichEditor::make('content')
+                    ->columnSpan(3)
                     ->label('anouncement')
                     ->required(),
+                Forms\Components\Checkbox::make('require_xml')
+                    ->required()
+                    ->columnSpan(1)
+                    ->default(false),
+                Forms\Components\Checkbox::make('require_xsd')
+                    ->columnSpan(1)
+                    ->default(false),
+                Forms\Components\Checkbox::make('require_xslt')
+                    ->required()
+                    ->columnSpan(1)
+                    ->default(false),
                 DatePicker::make('end_at')
                     ->minDate(Carbon::today()->addDay())
                     ->required(),
-            ])->columns(1);
+            ])->columns(3);
     }
 
     public static function table(Table $table): Table

@@ -17,6 +17,12 @@ return new class extends Migration
                 ->constrained('users')
                 ->cascadeOnDelete();
             $table->text('content');
+            $table->boolean('require_xml')
+                ->default(true);
+            $table->boolean('require_xsd')
+                ->default(true);
+            $table->boolean('require_xslt')
+                ->default(false);
             $table->timestamp('end_at');
             $table->timestamps();
         });

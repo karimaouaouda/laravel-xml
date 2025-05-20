@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Exercise;
 use App\Models\User;
+use Bmatovu\LaravelXml\Support\XmlValidator;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -15,7 +16,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
     }
 
     /**
@@ -28,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
                 Response::allow():
                 Response::deny('the exercise submission expired at : ' . $exercise->getAttribute('end_at'));
         });
+
     }
 }
