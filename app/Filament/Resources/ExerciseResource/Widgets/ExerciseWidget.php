@@ -14,4 +14,6 @@ class ExerciseWidget extends Widget
     protected int | string | array $columnSpan = 'full';
 
     public Exercise $exercise;
+
+    public string $key = 'exercise';
 }
