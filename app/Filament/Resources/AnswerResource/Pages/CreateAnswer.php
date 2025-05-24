@@ -51,7 +51,7 @@ class CreateAnswer extends CreateRecord
             ->schema([
                 Hidden::make('student_id')
                     ->required()
-                    ->default(auth()->id()),
+                    ->default(Auth::id()),
                 Hidden::make('exercise_id')
                     ->required()
                     ->default($this->exercise->getAttribute('id')),
@@ -96,7 +96,7 @@ class CreateAnswer extends CreateRecord
                                         }
                                     ])
                                     ->disabled(Auth::user()->solved($this->exercise->id))
-                                    ->label('XSD content')
+                                    ->label('XML content')
                                     ->required()
                             ]),
                         Wizard\Step::make('XSLT Content')
@@ -109,7 +109,7 @@ class CreateAnswer extends CreateRecord
                                             '';
                                     })
                                     ->disabled(Auth::user()->solved($this->exercise->id))
-                                    ->label('XSD content')
+                                    ->label('XSLT content')
                                     ->required()
                                     ->rules([
                                         fn (): \Closure => function (string $attribute, $value, \Closure $fail) {

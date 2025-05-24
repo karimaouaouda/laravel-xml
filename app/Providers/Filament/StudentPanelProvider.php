@@ -25,7 +25,7 @@ class StudentPanelProvider extends PanelProvider
 {
     /**
      * @throws \Exception
-     */
+    */
     public function panel(Panel $panel): Panel
     {
         return $panel
@@ -35,7 +35,7 @@ class StudentPanelProvider extends PanelProvider
             ->login()
             ->databaseNotifications()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

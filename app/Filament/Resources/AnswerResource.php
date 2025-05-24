@@ -79,6 +79,7 @@ class AnswerResource extends Resource
                     ->modalContent(function(Answer $record) {
                         return view('filament.resources.exercise-resource.widgets.exercise-widget', [
                             'exercise' => $record->exercise,
+                            'key' => 'exercise'
                         ]);
                     }),
                 Tables\Actions\Action::make('view solution')
@@ -86,8 +87,9 @@ class AnswerResource extends Resource
                     ->modal()
                     ->modalContent(function(Answer $record) {
                         return view('filament.resources.exercise-resource.widgets.exercise-widget', [
-                            'exercise' => $record,
-                            'title' => 'the solution'
+                            'solution' => $record,
+                            'title' => 'the solution',
+                            'key' => "solution"
                         ]);
                     })
             ])

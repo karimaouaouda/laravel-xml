@@ -32,7 +32,7 @@ class TeacherPanelProvider extends PanelProvider
             ->id(UserRoles::TEACHER->value)
             ->path('teacher')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
             ])
             ->login(TeacherLogin::class)
             ->registration(TeacherRegister::class)

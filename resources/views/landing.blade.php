@@ -7,6 +7,7 @@
     @vite('resources/css/app.css') <!-- Assuming you're using Vite -->
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
+    
     <!-- Header -->
     <header class="bg-blue-700 text-white shadow-md">
         <div class="container mx-auto px-4 py-6 flex justify-between items-center">
@@ -21,6 +22,7 @@
             </nav>
         </div>
     </header>
+
 
     <!-- Hero Section -->
     <section id="hero" class="bg-blue-600 text-white py-20">
