@@ -9,6 +9,11 @@ Route::get('/', function () {
     return view('landing');
 })->name('home');
 
+
+Route::get('/route-user', function(){
+    return view('route');
+})->name('route-user');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

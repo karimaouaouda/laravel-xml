@@ -33,6 +33,7 @@ class StudentPanelProvider extends PanelProvider
             ->id(UserRoles::STUDENT->value)
             ->path('student')
             ->login()
+            ->registration()
             ->databaseNotifications()
             ->colors([
                 'primary' => Color::Blue,

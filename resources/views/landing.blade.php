@@ -1,90 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XML Exercise Platform</title>
-    @vite('resources/css/app.css') <!-- Assuming you're using Vite -->
-</head>
-<body class="bg-gray-50 text-gray-800 font-sans">
-    
-    <!-- Header -->
-    <header class="bg-blue-700 text-white shadow-md">
-        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
-            <h1 class="text-2xl font-bold">XML Exercise Platform</h1>
-            <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="#hero" class="hover:text-blue-200 transition">Home</a></li>
-                    <li><a href="#about" class="hover:text-blue-200 transition">About Us</a></li>
-                    <li><a href="#contact" class="hover:text-blue-200 transition">Contact</a></li>
-                    <li><a href="#faq" class="hover:text-blue-200 transition">FAQ</a></li>
-                </ul>
+
+    <head>
+        <meta charset="utf-8">
+        <title>D.O.P.R.A.A</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://www.gouanour.com/pfe/all.css"/>
+        <link href="https://www.gouanour.com/pfe/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+        <!-- Libraries Stylesheet -->
+        <link href="https://www.gouanour.com/pfe/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="https://www.gouanour.com/pfe/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="{{ asset('css/pfe/lightbox.min.css') }}" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="https://www.gouanour.com/pfe/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="{{ asset('css/pfe/styles.css') }}" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid header position-relative overflow-hidden p-0">
+            <nav class="navbar navbar-expand-lg fixed-top navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="index.html" class="navbar-brand p-0">
+                    <h1 class="display-6 text-primary m-0">EDU.BRIDGE</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="#" class="nav-item nav-link active">&nbsp;</a>
+                        <a href="#" class="nav-item nav-link">&nbsp;</a>
+                        <a href="#" class="nav-item nav-link">&nbsp;</a>
+                        
+                        <a href="#" class="nav-item nav-link">&nbsp;</a>
+                    </div>
+                    <a href="{{ route('route-user', ['action' => 'register']) }}" class="btn btn-light border border-primary rounded-pill text-primary py-2 px-4 me-4">S'inscrire</a>
+                    <a href="{{ route('route-user', ['action' => 'login']) }}" class="btn btn-primary rounded-pill text-white py-2 px-4">Se connecter</a>
+                </div>
             </nav>
-        </div>
-    </header>
 
 
-    <!-- Hero Section -->
-    <section id="hero" class="bg-blue-600 text-white py-20">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">Learn and Share XML Exercises</h1>
-            <p class="text-xl mb-10 max-w-2xl mx-auto">A platform for teachers to share XML exercises and for students to practice and improve their skills.</p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="{{ route('filament.student.pages.dashboard') }}" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition shadow-lg">Continue as Student</a>
-                <a href="{{ route('filament.teacher.pages.dashboard') }}" class="bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 transition shadow-lg">Continue as Teacher</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-blue-700 mb-12">About Us</h2>
-            <div class="max-w-3xl mx-auto text-lg">
-                <p class="mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-blue-700 mb-12">Contact</h2>
-            <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
-                <p class="mb-4">If you have any questions, feel free to reach out to us at:</p>
-                <p class="mb-2"><span class="font-semibold">Email:</span> info@xmlexerciseplatform.com</p>
-                <p><span class="font-semibold">Phone:</span> (123) 456-7890</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-blue-700 mb-12">FAQ</h2>
-            <div class="max-w-3xl mx-auto space-y-6">
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold text-blue-600 mb-2">How can I sign up as a teacher?</h3>
-                    <p>You can sign up by clicking the "Continue as Teacher" button on the homepage.</p>
+            <!-- Hero Header Start -->
+            <div class="hero-header overflow-hidden px-5">
+                <div class="rotate-img">
+                    <img src="https://www.gouanour.com/pfe/img/sty-1.png" class="img-fluid w-100" alt="">
+                    <div class="rotate-sty-2"></div>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold text-blue-600 mb-2">Is this platform free?</h3>
-                    <p>Yes, the platform is currently free to use.</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                    <h3 class="text-xl font-semibold text-blue-600 mb-2">How can I submit an exercise as a teacher?</h3>
-                    <p>Once logged in as a teacher, you will have an option to upload new exercises.</p>
+                <div class="row gy-5 align-items-center">
+                    <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.1s">
+                        <h1 class="display-4 text-dark mb-4 wow fadeInUp" data-wow-delay="0.3s">Online Platform to share exercises and deposit solutions</h1>
+                        <p class="fs-4 mb-4 wow fadeInUp" data-wow-delay="0.5s">for Automate the learning and teaching process</p>
+                        <a href="{{ route('route-user', ['action' => 'login']) }}" class="btn btn-primary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.7s">Se connecter</a>
+                    </div>
+                    <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.2s">
+                        <img src="https://www.gouanour.com/pfe/img/hero-img-1.png" class="img-fluid w-100 h-100" alt="">
+                    </div>
                 </div>
             </div>
+            <!-- Hero Header End -->
         </div>
-    </section>
+        <!-- Navbar & Hero End -->
 
-    <!-- Footer -->
-    <footer class="bg-blue-700 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2023 XML Exercise Platform. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
-</html> 
+
+        <!-- About Start -->
+        
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+    <!-- JavaScript Libraries -->
+    <script src="https://www.gouanour.com/pfe/jquery.min.js"></script>
+    <script src="https://www.gouanour.com/pfe/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gouanour.com/pfe/lib/wow/wow.min.js"></script>
+    <script src="https://www.gouanour.com/pfe/lib/easing/easing.min.js"></script>
+    <script src="https://www.gouanour.com/pfe/lib/waypoints/waypoints.min.js"></script>
+    <script src="https://www.gouanour.com/pfe/lib/counterup/counterup.min.js"></script>
+    <script src="https://www.gouanour.com/pfe/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://www.gouanour.com/pfe/lib/lightbox/js/lightbox.min.js"></script>
+    
+
+    <!-- Template Javascript -->
+    <script src="https://www.gouanour.com/pfe/js/main.js"></script>
+    </body>
+
+</html>
