@@ -78,7 +78,7 @@
                         <a href="{{ route('route-user', ['action' => 'login']) }}" class="btn btn-primary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.7s">Se connecter</a>
                     </div>
                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.2s">
-                        <img src="https://www.gouanour.com/pfe/img/hero-img-1.png" class="img-fluid w-100 h-100" alt="">
+                        <img src="{{ asset('images/illustrator.png') }}" class="img-fluid w-100 h-100" alt="">
                     </div>
                 </div>
             </div>
