@@ -3,8 +3,8 @@
 namespace App\Providers\Filament;
 
 use App\Enums\UserRoles;
-use App\Filament\Teacher\Pages\TeacherLogin;
-use App\Filament\Teacher\Pages\TeacherRegister;
+use App\Filament\Pages\TeacherLogin;
+use App\Filament\Pages\TeacherRegister;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;

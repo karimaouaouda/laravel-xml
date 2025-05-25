@@ -9,11 +9,6 @@ use Illuminate\Contracts\Support\Htmlable;
 class StudentLogin extends Login
 {
 
-    public function getTitle(): string|Htmlable
-    {
-        return '';
-    }
-
     public function hasLogo(): bool
     {
         return false;
