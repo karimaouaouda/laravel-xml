@@ -2,9 +2,10 @@
 
 namespace App\Filament\Pages;
 
+use Filament\Pages\Page;
 use Filament\Pages\Auth\Register;
 
-class StudentRegister extends Register
+class TeacherRegister extends Register
 {
     public function hasLogo(): bool
     {

@@ -32,8 +32,8 @@ class StudentPanelProvider extends PanelProvider
             ->default()
             ->id(UserRoles::STUDENT->value)
             ->path('student')
-            ->login()
-            ->registration()
+            ->login(StudentLogin::class)
+            ->registration(StudentRegister::class)
             ->databaseNotifications()
             ->colors([
                 'primary' => Color::Blue,
