@@ -6,7 +6,7 @@
 
         @if($key == 'solution')
             <div class="p-2 bg-white border rounded-md">
-                {{ $solution->xml_content }}
+                try this
             </div>
         @else
             {!! $exercise->content !!}
