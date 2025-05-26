@@ -21,12 +21,14 @@
                     student
                 </h1>
             </a>
-            <a href="{{ route('filament.teacher.auth.' . request('action', 'login')) }}" class="w-72 h-72 rounded-lg shadow border hover:scale-105 duration-300 ease-in-out flex flex-col items-center justify-center space-y-3">
-                <img class="w-2/5 object-cover h-auto" src="{{ asset('images/admin.svg') }}" alt="logo">
-                <h1 class="font-semibold uppercase tracking-wide text-slate-800">
-                    Teacher
-                </h1>
-            </a>
+            @if(request('action', 'login') === 'login')
+                <a href="{{ route('filament.teacher.auth.' . request('action', 'login')) }}" class="w-72 h-72 rounded-lg shadow border hover:scale-105 duration-300 ease-in-out flex flex-col items-center justify-center space-y-3">
+                    <img class="w-2/5 object-cover h-auto" src="{{ asset('images/admin.svg') }}" alt="logo">
+                    <h1 class="font-semibold uppercase tracking-wide text-slate-800">
+                        Teacher
+                    </h1>
+                </a>
+            @endif
         </div>
 
         <a href="{{ route('home') }}" class="mt-2 font-semibold">back</a>
