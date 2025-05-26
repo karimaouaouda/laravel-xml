@@ -10,16 +10,15 @@
 
         <!-- Google Web Fonts -->
 
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
 
         <!-- Icon Font Stylesheet -->
-        <link rel="stylesheet" href="https://www.gouanour.com/pfe/all.css"/>
-        <link href="https://www.gouanour.com/pfe/bootstrap-icons.css" rel="stylesheet">
+        <link href="{{ asset('css/pfe/bootstrap-icons.min.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
 
         <!-- Libraries Stylesheet -->
-        <link href="https://www.gouanour.com/pfe/lib/animate/animate.min.css" rel="stylesheet">
-        <link href="https://www.gouanour.com/pfe/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="{{ asset('css/pfe/animate.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/pfe/carousel.min.css')}}" rel="stylesheet">
         <link href="{{ asset('css/pfe/lightbox.min.css') }}" rel="stylesheet">
 
 
@@ -56,7 +55,7 @@
                         <a href="#" class="nav-item nav-link active">&nbsp;</a>
                         <a href="#" class="nav-item nav-link">&nbsp;</a>
                         <a href="#" class="nav-item nav-link">&nbsp;</a>
-                        
+
                         <a href="#" class="nav-item nav-link">&nbsp;</a>
                     </div>
                     <a href="{{ route('route-user', ['action' => 'register']) }}" class="btn btn-light border border-primary rounded-pill text-primary py-2 px-4 me-4">S'inscrire</a>
@@ -88,13 +87,13 @@
 
 
         <!-- About Start -->
-        
+
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+        <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>
 
-        
+
     <!-- JavaScript Libraries -->
     <script src="https://www.gouanour.com/pfe/jquery.min.js"></script>
     <script src="https://www.gouanour.com/pfe/bootstrap.bundle.min.js"></script>
@@ -104,7 +103,7 @@
     <script src="https://www.gouanour.com/pfe/lib/counterup/counterup.min.js"></script>
     <script src="https://www.gouanour.com/pfe/lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="https://www.gouanour.com/pfe/lib/lightbox/js/lightbox.min.js"></script>
-    
+
 
     <!-- Template Javascript -->
     <script src="https://www.gouanour.com/pfe/js/main.js"></script>

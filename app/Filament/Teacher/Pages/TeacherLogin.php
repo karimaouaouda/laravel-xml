@@ -7,4 +7,8 @@ use Filament\Pages\Page;
 
 class TeacherLogin extends Login
 {
+    public function hasLogo(): bool
+    {
+        return false;
+    }
 }

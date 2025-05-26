@@ -8,7 +8,6 @@ use Illuminate\Contracts\Support\Htmlable;
 
 class StudentLogin extends Login
 {
-
     public function hasLogo(): bool
     {
         return false;

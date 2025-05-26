@@ -4,7 +4,6 @@ namespace App\Providers\Filament;
 
 use App\Enums\UserRoles;
 use App\Filament\Pages\TeacherLogin;
-use App\Filament\Pages\TeacherRegister;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -13,7 +12,6 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -35,7 +33,7 @@ class TeacherPanelProvider extends PanelProvider
                 'primary' => Color::Blue,
             ])
             ->login(TeacherLogin::class)
-            ->registration(TeacherRegister::class)
+            ->registration(\App\Filament\Teacher\Pages\TeacherRegister::class)
             ->databaseNotifications()
             ->discoverResources(in: app_path('Filament/Teacher/Resources'), for: 'App\\Filament\\Teacher\\Resources')
             ->discoverPages(in: app_path('Filament/Teacher/Pages'), for: 'App\\Filament\\Teacher\\Pages')

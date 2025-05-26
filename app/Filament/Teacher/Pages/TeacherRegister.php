@@ -10,6 +10,11 @@ use Filament\Pages\Page;
 class TeacherRegister extends Register
 {
 
+    public function hasLogo(): bool
+    {
+        return false;
+    }
+
     /**
      * @return array<int | string, string | Form>
      */

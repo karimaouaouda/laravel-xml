@@ -24,7 +24,6 @@ class User extends Authenticatable implements FilamentUser
      * @var list<string>
      */
     protected $fillable = [
-        'group_id',
         'name',
         'email',
         'password',
@@ -89,7 +88,7 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
 
-        return true || $this->getAttribute('role')->value == $panel->getId();
+        return $this->getAttribute('role')->value == $panel->getId();
     }
 
     public function answers(): \Illuminate\Database\Eloquent\Relations\HasMany
