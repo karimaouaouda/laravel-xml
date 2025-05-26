@@ -60,7 +60,7 @@ class AnswerResource extends Resource
                     ->sortable()
                     ->default('0')
                     ->width('40px')
-                    ->rules(['numeric']),
+                    ->rules(['numeric', 'min:0', 'max:20']),
             ])
             ->filters([
                 //
@@ -72,6 +72,7 @@ class AnswerResource extends Resource
                     ->modalContent(function(Answer $record) {
                         return view('filament.resources.exercise-resource.widgets.exercise-widget', [
                             'exercise' => $record->exercise,
+                            'key' => 'exercise'
                         ]);
                     }),
                 Tables\Actions\Action::make('view solution')
@@ -80,7 +81,8 @@ class AnswerResource extends Resource
                     ->modalContent(function(Answer $record) {
                         return view('filament.resources.exercise-resource.widgets.exercise-widget', [
                             'exercise' => $record,
-                            'title' => 'the solution'
+                            'title' => 'the solution',
+                            'key' => 'solution'
                         ]);
                     })
 
