@@ -80,7 +80,7 @@ class AnswerResource extends Resource
                     ->modal()
                     ->modalContent(function(Answer $record) {
                         return view('filament.resources.exercise-resource.widgets.exercise-widget', [
-                            'exercise' => $record,
+                            'solution' => $record,
                             'title' => 'the solution',
                             'key' => 'solution'
                         ]);
