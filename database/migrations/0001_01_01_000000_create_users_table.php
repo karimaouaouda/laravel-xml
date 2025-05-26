@@ -38,6 +38,14 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        \Illuminate\Support\Facades\DB::table('users')
+            ->insert([
+                'name' => 'Gouasmi Noureddine',
+                'email' => 'gouasmi.noureddine@gmail.com',
+                'password' => \Illuminate\Support\Facades\Hash::make('gouasmi.noureddine24'),
+                'role' => UserRoles::TEACHER->value
+            ]);
     }
 
     /**

@@ -32,7 +32,6 @@ class TeacherPanelProvider extends PanelProvider
                 'primary' => Color::Blue,
             ])
             ->login(\App\Filament\Teacher\Pages\TeacherLogin::class)
-            ->registration(\App\Filament\Teacher\Pages\TeacherRegister::class)
             ->databaseNotifications()
             ->discoverResources(in: app_path('Filament/Teacher/Resources'), for: 'App\\Filament\\Teacher\\Resources')
             ->discoverPages(in: app_path('Filament/Teacher/Pages'), for: 'App\\Filament\\Teacher\\Pages')
