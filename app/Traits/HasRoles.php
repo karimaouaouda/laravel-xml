@@ -9,26 +9,26 @@ trait HasRoles
 {
     public function isStudent(): bool
     {
-        return $this->role === UserRoles::STUDENT;
+        return $this->getAttribute('role') === UserRoles::STUDENT;
     }
 
     public function isTeacher(): bool
     {
-        return $this->role === UserRoles::TEACHER;
+        return $this->getAttribute('role') === UserRoles::TEACHER;
     }
 
     public function isAdmin(): bool
     {
-        return $this->role === UserRoles::ADMIN;
+        return $this->getAttribute('role') === UserRoles::ADMIN;
     }
 
     public function isSuperAdmin(): bool
     {
-        return $this->role === UserRoles::SUPER_ADMIN;
+        return $this->getAttribute('role') === UserRoles::SUPER_ADMIN;
     }
     // get role
     public function getRole(): string
     {
-        return $this->role;
+        return $this->getAttribute('role');
     }
 }
