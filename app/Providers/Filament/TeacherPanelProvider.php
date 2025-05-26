@@ -3,7 +3,6 @@
 namespace App\Providers\Filament;
 
 use App\Enums\UserRoles;
-use App\Filament\Pages\TeacherLogin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -32,7 +31,7 @@ class TeacherPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Blue,
             ])
-            ->login(TeacherLogin::class)
+            ->login(\App\Filament\Teacher\Pages\TeacherLogin::class)
             ->registration(\App\Filament\Teacher\Pages\TeacherRegister::class)
             ->databaseNotifications()
             ->discoverResources(in: app_path('Filament/Teacher/Resources'), for: 'App\\Filament\\Teacher\\Resources')

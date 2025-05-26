@@ -33,7 +33,8 @@ class StudentRegister extends Register
         ];
     }
 
-    public function getRoleFormComponent(){
+    public function getRoleFormComponent(): Hidden
+    {
         return Hidden::make('role')
             ->default(UserRoles::STUDENT->value);
     }

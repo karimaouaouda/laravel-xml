@@ -35,7 +35,8 @@ class TeacherRegister extends Register
         ];
     }
 
-    public function getRoleFormComponent(){
+    public function getRoleFormComponent(): Hidden
+    {
         return Hidden::make('role')
                     ->default(UserRoles::TEACHER->value);
     }
