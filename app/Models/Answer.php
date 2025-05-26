@@ -23,18 +23,6 @@ class Answer extends Model
         'note',
     ];
 
-    public function xmlContent(): Attribute
-    {
-        return Attribute::make(fn() => $this->getAttribute('xml_content'));
-    }
-    public function xsdContent(): Attribute
-    {
-        return Attribute::make(fn() => $this->getAttribute('xsd_content'));
-    }
-    public function xsltContent(): Attribute
-    {
-        return Attribute::make(fn() => $this->getAttribute('xslt_content'));
-    }
 
 
     public function student(){

@@ -40,6 +40,17 @@ class User extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
+    public function setGroupAttribute($group_id): \Illuminate\Http\JsonResponse
+    {
+        if( $this->isTeacher() ){
+            throw new \Exception('You can not set a group for a teacher');
+        }
+
+        $this->group()->sync([$group_id]);
+
+        return response()->json(['message' => 'Group set successfully']);
+    }
+
     /**
      * Get the attributes that should be cast.
      *

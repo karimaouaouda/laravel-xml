@@ -83,14 +83,17 @@ class UserResource extends Resource
                     ->label('Name')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\SelectColumn::make('group.group_number')
+                Tables\Columns\SelectColumn::make('group')
+                    ->getStateUsing(function (User $record){
+                        return $record->group()->first()?->id;
+                    })
                     ->label('Group')
                     ->options(function(){
                         return Group::all()->pluck('group_number', 'id');
                     })
                     ->sortable()
-                    ->beforeStateUpdated(function ($state){
-                        dd($state);
+                    ->updateStateUsing(function (User $record, $state){
+                        $record->group()->sync([$state]);
                     })
 
             ])
