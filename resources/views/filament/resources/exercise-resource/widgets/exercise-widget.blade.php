@@ -4,7 +4,7 @@
             {{$title?? 'the exercise announcement'}}
         </h1>
 
-        @if($key == 'solution')
+        @if($key === 'solution')
             <div class="p-2 bg-white border rounded-md">
                 try this
             </div>

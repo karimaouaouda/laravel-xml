@@ -5,6 +5,7 @@ namespace App\Filament\Teacher\Resources;
 use App\Enums\UserRoles;
 use App\Filament\Teacher\Resources\UserResource\Pages;
 use App\Filament\Teacher\Resources\UserResource\RelationManagers;
+use App\Models\Group;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\RichEditor;
@@ -82,8 +83,15 @@ class UserResource extends Resource
                     ->label('Name')
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('group.group_number')
-                    ->badge()
+                Tables\Columns\SelectColumn::make('group.group_number')
+                    ->label('Group')
+                    ->options(function(){
+                        return Group::all()->pluck('group_number', 'id');
+                    })
+                    ->sortable()
+                    ->beforeStateUpdated(function ($state){
+                        dd($state);
+                    })
 
             ])
             ->filters([
