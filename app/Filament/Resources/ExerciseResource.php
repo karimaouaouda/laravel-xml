@@ -6,6 +6,8 @@ use App\Filament\Resources\AnswerResource\Pages\CreateAnswer;
 use App\Filament\Resources\ExerciseResource\Pages;
 use App\Filament\Resources\ExerciseResource\RelationManagers;
 use App\Models\Exercise;
+use App\Models\Group;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,6 +16,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class ExerciseResource extends Resource
 {
@@ -27,6 +30,11 @@ class ExerciseResource extends Resource
             ->schema([
                 //
             ]);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return Auth::user()->group->exercises()->getQuery();
     }
 
     public static function table(Table $table): Table
