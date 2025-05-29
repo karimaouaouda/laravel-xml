@@ -32,11 +32,6 @@ class ExerciseResource extends Resource
             ]);
     }
 
-    public static function getEloquentQuery(): Builder
-    {
-        return Auth::user()->group()->exercises()->getQuery();
-    }
-
     public static function table(Table $table): Table
     {
         return $table
