@@ -7,13 +7,14 @@ namespace App\Models;
 use App\Enums\UserRoles;
 use App\Traits\HasRoles;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasName;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, HasName
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasRoles;
@@ -115,5 +116,10 @@ class User extends Authenticatable implements FilamentUser
     public function solved(int|string $exo_id): bool
     {
         return $this->answers()->where('exercise_id', $exo_id)->exists();
+    }
+
+    public function getFilamentName(): string
+    {
+        return $this->getAttribute('first_name') . ' ' . $this->getAttribute('last_name');
     }
 }
