@@ -14,7 +14,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -41,7 +42,8 @@ return new class extends Migration
 
         \Illuminate\Support\Facades\DB::table('users')
             ->insert([
-                'name' => 'Gouasmi Noureddine',
+                'first_name' => 'Noureddine',
+                'last_name' => 'Gouasmi',
                 'email' => 'gouasmi.noureddine@gmail.com',
                 'password' => \Illuminate\Support\Facades\Hash::make('gouasmi.noureddine24'),
                 'role' => UserRoles::TEACHER->value
