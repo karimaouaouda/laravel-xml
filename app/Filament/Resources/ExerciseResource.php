@@ -32,6 +32,14 @@ class ExerciseResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        $student_group = Auth::user()->group->first();
+
+
+        return Exercise::query()->whereIn('id', $student_group->exercises->pluck('id')->toArray());
+    }
+
     public static function table(Table $table): Table
     {
         return $table

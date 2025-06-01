@@ -11,6 +11,7 @@ use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Colors\Color;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -51,16 +52,13 @@ class ExerciseResource extends Resource
                     ->columnSpan(3)
                     ->label('anouncement')
                     ->required(),
-                Forms\Components\Checkbox::make('require_xml')
-                    ->required()
+                Forms\Components\Radio::make('require')
                     ->columnSpan(1)
-                    ->default(false),
-                Forms\Components\Checkbox::make('require_xsd')
-                    ->columnSpan(1)
-                    ->default(false),
-                Forms\Components\Checkbox::make('require_xslt')
-                    ->required()
-                    ->columnSpan(1)
+                    ->options([
+                        'xsd' => 'require xsd',
+                        'xslt' => 'require xslt',
+                    ])
+                    ->columnSpan(3)
                     ->default(false),
                 DatePicker::make('end_at')
                     ->minDate(Carbon::today()->addDay())
@@ -72,13 +70,46 @@ class ExerciseResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('id')
+                    ->prefix('#')
+                    ->badge()
+                    ->sortable()
+                    ->searchable()
+                    ->extraAttributes([
+                        'class' => 'font-bold'
+                    ], true)
+                    ->color(Color::Blue),
+                Tables\Columns\TextColumn::make('required')
+                    ->default('0')
+                    ->label('required')
+                    ->formatStateUsing(function (Exercise $record){
+                        return $record->getAttribute('require_xsd') ? 'XSD' : 'XSLT';
+                    })
+                    ->badge(),
+                Tables\Columns\TextColumn::make('end_at')
+                    ->dateTime()
+                    ->badge()
+                    ->color(Color::Red),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->badge()
+                    ->color(Color::Blue),
             ])
             ->filters([
-                //
+
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('view exercise')
+                    ->icon('heroicon-o-eye')
+                    ->modal()
+                    ->modalContent(function(Exercise $record) {
+                        return view('filament.resources.exercise-resource.widgets.exercise-widget', [
+                            'exercise' => $record,
+                            'key' => 'exercise'
+                        ]);
+                    })
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

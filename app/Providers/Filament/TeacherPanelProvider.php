@@ -29,8 +29,9 @@ class TeacherPanelProvider extends PanelProvider
             ->id(UserRoles::TEACHER->value)
             ->path('teacher')
             ->colors([
-                'primary' => Color::Blue,
+                'primary' => Color::Green,
             ])
+            ->profile()
             ->login(\App\Filament\Teacher\Pages\TeacherLogin::class)
             ->databaseNotifications()
             ->discoverResources(in: app_path('Filament/Teacher/Resources'), for: 'App\\Filament\\Teacher\\Resources')

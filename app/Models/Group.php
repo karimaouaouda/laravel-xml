@@ -36,7 +36,6 @@ class Group extends Model
         return $this->belongsToMany(
             Exercise::class,
             'groups_exercises',
-
         );
     }
 

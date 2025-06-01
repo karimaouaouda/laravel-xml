@@ -24,18 +24,10 @@ class CreateExercise extends CreateRecord
      */
     protected function handleRecordCreation(array $data): Model
     {
-        $isAll = $data['all'] ?? false;
 
-        if( !($data['require_xml'] || $data['require_xsd'] || $data['require_xslt']) ){
-            Notification::make()
-                ->title('error when creatig exercise')
-                ->body('must be at least one type is checked')
-                ->danger()
-                ->send();
-            throw ValidationException::withMessages([
-                'require_xml' => 'error when creating exercise'
-            ]);
-        }
+        $isAll = $data['all'] ?? false;
+        $data['require_xsd'] = $data['require'] == 'xsd';
+        $data['require_xslt'] = $data['require'] == 'xslt';
 
         return DB::transaction(function () use ($data, $isAll) {
             $exercise = new Exercise($data);
@@ -60,6 +52,6 @@ class CreateExercise extends CreateRecord
                 ->sendToDatabase($students);
 
                 return $exercise;
-        });
+        }, 2);
     }
 }
