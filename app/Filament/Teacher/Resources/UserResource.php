@@ -81,6 +81,8 @@ class UserResource extends Resource
                     ->searchable(),
                 TextColumn::make('name')
                     ->label('Name')
+                    ->default('name')
+                    ->formatStateUsing(fn(User $record) => $record->getAttribute('first_name') . ' ' . $record->getAttribute('last_name'))
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\SelectColumn::make('group')
