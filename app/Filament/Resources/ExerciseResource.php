@@ -49,6 +49,8 @@ class ExerciseResource extends Resource
                     ->badge()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('teacher.name')
+                    ->default('4')
+                    ->formatStateUsing(fn(Exercise $record) => $record->teacher->first_name . ' ' . $record->teacher->last_name)
                     ->badge()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
