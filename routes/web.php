@@ -4,11 +4,15 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
     return view('landing');
 })->name('home');
 
+Route::get('db-fresh', function(){
+    Artisan::run('migrate:fresh');
+});
 
 Route::get('/route-user', function(){
     return view('route');
