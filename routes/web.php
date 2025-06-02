@@ -11,7 +11,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('db-fresh', function(){
-    Artisan::run('migrate:fresh');
+    Artisan::call('migrate:fresh');
 });
 
 Route::get('/route-user', function(){
