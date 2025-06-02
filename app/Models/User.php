@@ -43,6 +43,10 @@ class User extends Authenticatable implements FilamentUser, HasName, HasAvatar
         'remember_token',
     ];
 
+    public function getNameAttribute(){
+        return $this->first_name . " " . $this->last_name;
+    }
+
     public function setGroupAttribute($group_id): \Illuminate\Http\JsonResponse
     {
         if( $this->isTeacher() ){

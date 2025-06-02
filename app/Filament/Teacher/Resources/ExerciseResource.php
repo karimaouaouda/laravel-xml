@@ -40,7 +40,7 @@ class ExerciseResource extends Resource
                     ->columnSpan(1)
                     ->visible(fn(Forms\Get $get) => !$get('all'))
                     ->options(function (){
-                        return $db_groups = Auth::user()->groups->pluck('id', 'group_number')->toArray();
+                        return $db_groups = Auth::user()->groups->pluck('group_number', 'id')->toArray();
                     })
                     ->disabled(function(Forms\Get $get){
                         return $get('all');
